@@ -7,7 +7,11 @@
     "email": "sam.freeman.55@gmail.com"
   },
   "license": "MIT",
-  "keywords": [ "String", "Function", "extensions" ],
+  "keywords": [
+    "String",
+    "Function",
+    "extensions"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/samfreeman/utx-core.git"
@@ -17,12 +21,13 @@
   "scripts": {
     "dev": "tsc --watch",
     "build": "tsc",
-    "test": "npx jest && \"tools/coverage-results/lcov-report/index.html\"",
+    "test": "npx jest",
+    "coverage": "\"tools/coverage-results/lcov-report/index.html\"",
     "lint": "eslint --ext .ts",
     "prepare": "yarn build",
     "prepublishOnly": "yarn test && yarn lint",
     "preversion": "yarn lint",
-    "version": "yarn format && git add -A src",
+    "version": "yarn lint && git add -A src",
     "postversion": "git push && git push --tags"
   },
   "devDependencies": {
