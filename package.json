@@ -1,6 +1,6 @@
 {
   "name": "utx-core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Core utilities and extensions for String and Function",
   "author": {
     "name": "Sam Freeman",
