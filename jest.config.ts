@@ -3,7 +3,10 @@
  * https://jestjs.io/docs/configuration
  */
 
-export default {
+import { Config } from 'jest'
+
+
+const config: Config = {
 	clearMocks: true,
 	collectCoverage: true,
 	collectCoverageFrom: [
@@ -15,5 +18,8 @@ export default {
 	coverageProvider: 'v8',
 	preset: 'ts-jest',
 	testEnvironment: 'jest-environment-node',
+	testMatch: ['tests/**/*.test.ts'],
 	verbose: true
 }
+
+export default config
