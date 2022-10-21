@@ -17,7 +17,7 @@
   "scripts": {
     "dev": "tsc --watch",
     "build": "tsc",
-    "test": "jest",
+    "test": "npx jest && \"tools/coverage-results/lcov-report/index.html\"",
     "lint": "eslint --ext .ts",
     "prepare": "yarn build",
     "prepublishOnly": "yarn test && yarn lint",

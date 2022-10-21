@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1666298485840" clover="3.2.0">
-  <project timestamp="1666298485840" name="All files">
+<coverage generated="1666369723282" clover="3.2.0">
+  <project timestamp="1666369723282" name="All files">
     <metrics statements="39" coveredstatements="39" conditionals="21" coveredconditionals="21" methods="1" coveredmethods="1" elements="61" coveredelements="61" complexity="0" loc="39" ncloc="39" packages="1" files="1" classes="1"/>
-    <file name="lookFor.ts" path="D:\Code\javascript\ts-node\templates\ts-node-jest-npm-package\src\string\lookFor.ts">
+    <file name="lookFor.ts" path="D:\Code\javascript\ts-node\utx-core\src\string\lookFor.ts">
       <metrics statements="39" coveredstatements="39" conditionals="21" coveredconditionals="21" methods="1" coveredmethods="1"/>
       <line num="1" count="1" type="stmt"/>
       <line num="2" count="1" type="stmt"/>
