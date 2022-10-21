@@ -362,10 +362,10 @@ jobs:
         
         steps:
         - name: Checkout repository
-            uses: actions/checkout@v2
+            uses: actions/checkout@v3
 
         - name: Setup Node.js ${{ matrix.node-version }}
-            uses: actions/setup-node@v1
+            uses: actions/setup-node@v3
             with:
                 node-version: ${{ matrix.node-version }}
 
@@ -409,7 +409,7 @@ git push
   "scripts": {
     "dev": "tsc --watch",
     "build": "tsc",
-    "test": "jest",
+    "test": "npx jest && \"tools/coverage-results/lcov-report/index.html\"",
     "lint": "eslint --ext .ts",
     "prepare": "yarn build",
     "prepublishOnly": "yarn test && yarn lint",
