@@ -21,8 +21,9 @@
   "scripts": {
     "dev": "tsc --watch",
     "build": "tsc",
-    "test": "npx jest",
+    "test": "npx jest --verbose --no-color 2>tools/logs/tests.log",
     "coverage": "\"tools/coverage-results/lcov-report/index.html\"",
+    "cover": "yarn test && yarn coverage",
     "lint": "eslint --ext .ts",
     "prepare": "yarn build",
     "prepublishOnly": "yarn test && yarn lint",
