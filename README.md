@@ -27,26 +27,26 @@ npx tsc --init
 // tsconfig.json
 // ---
 {
-	"compilerOptions": {
-		"incremental": true,
-		"target": "es2016",
-		"module": "commonjs",
-		"declaration": true,  // Need this to create .d.ts files
-		"outDir": "build",
-		"strict": true,
-		"noImplicitAny": true,
-		"forceConsistentCasingInFileNames": true,
-		"skipLibCheck": true
-	},
-	"include": [
-		"src/**/*.ts"
-	],
-	"exclude": [
-		"node_modules",
-		"build",
-		"src/**/__tests__/*",
-		"src/**/*.test.ts"
-	]
+    "compilerOptions": {
+        "incremental": true,
+        "target": "es2016",
+        "module": "commonjs",
+        "declaration": true,  // Need this to create .d.ts files
+        "outDir": "build",
+        "strict": true,
+        "noImplicitAny": true,
+        "forceConsistentCasingInFileNames": true,
+        "skipLibCheck": true
+    },
+    "include": [
+        "src/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "build",
+        "src/**/__tests__/*",
+        "src/**/*.test.ts"
+    ]
 }
 ```
 
@@ -75,49 +75,49 @@ npx eslint --init
 
 ```json
 // .eslintrc.json
----
+// ---
 {
-		"parser": "@typescript-eslint/parser",
-		"parserOptions": {
-				"ecmaVersion": "latest",
-				"sourceType": "module"
-		},
-		"plugins": [
-				"@typescript-eslint"
-		],
-		"extends": [
-				"eslint:recommended",
-				"plugin:@typescript-eslint/recommended"
-		],
-		"env": {
-				"browser": true,
-				"es2021": true
-		},
-		"overrides": [
-		],
-		"rules": {
-				"indent": [
-						"error",
-						"tab"
-				],
-				"linebreak-style": [
-						"error",
-						"windows"
-				],
-				"quotes": [
-						"error",
-						"single"
-				],
-				"semi": [
-						"error",
-						"never"
-				],
-				"@typescript-eslint/no-unused-vars": "error",
-				"@typescript-eslint/consistent-type-definitions": [
-						"error",
-						"interface"
-				]
-		}
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "overrides": [
+  ],
+  "rules": {
+    "indent": [
+      "error",
+      "tab"
+    ],
+    "linebreak-style": [
+      "error",
+      "windows"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "never"
+    ],
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/consistent-type-definitions": [
+      "error",
+      "interface"
+    ]
+  }
 }
 ```
 
@@ -151,20 +151,19 @@ npx jest --init
  * For a detailed explanation regarding each configuration property and type check, visit:
  * https://jestjs.io/docs/configuration
  */
-
 export default {
-	clearMocks: true,
-	collectCoverage: true,
-	collectCoverageFrom: [
-		'src/**/*.ts',
-		'!src/**/index.ts',
-		'!src/**/*.test.ts'
-	],
-	coverageDirectory: 'tools/coverage-results',
-	coverageProvider: 'v8',
-	preset: 'ts-jest',
-	testEnvironment: 'jest-environment-node',
-	verbose: true
+    clearMocks: true,
+    collectCoverage: true,
+    collectCoverageFrom: [
+        'src/**/*.ts',
+        '!src/**/index.ts',
+        '!src/**/*.test.ts'
+    ],
+    coverageDirectory: 'tools/coverage-results',
+    coverageProvider: 'v8',
+    preset: 'ts-jest',
+    testEnvironment: 'jest-environment-node',
+    verbose: true
 }
 ```
 
@@ -184,33 +183,33 @@ export const NotFound: LookForResult = [-1, 0]
 
 
 export const lookFor = (
-	value: string,
-	what: string | RegExp,
-	start?: number
+    value: string,
+    what: string | RegExp,
+    start?: number
 ): LookForResult => {
-	if (typeof what == 'string' && what == '')
-		return NotFound
+    if (typeof what == 'string' && what == '')
+        return NotFound
 
-	start = start ?? 0
-	if (start >= value.length)
-		return NotFound
-	
-	if (start <= -value.length)
-		start = 0
-	else if (start < 0)
-		start = value.length + start
+    start = start ?? 0
+    if (start >= value.length)
+        return NotFound
+    
+    if (start <= -value.length)
+        start = 0
+    else if (start < 0)
+        start = value.length + start
 
-	if (typeof what == 'string') {
-		const index = value.indexOf(what, start)
-		return index < 0 ? NotFound : [index, what.length]
-	}
+    if (typeof what == 'string') {
+        const index = value.indexOf(what, start)
+        return index < 0 ? NotFound : [index, what.length]
+    }
 
-	if (start != 0)
-		value = value.slice(start)
-	const match = value.match(what)
-	return !match
-		? NotFound
-		: [start + (match.index ?? 0), match[0].length]
+    if (start != 0)
+        value = value.slice(start)
+    const match = value.match(what)
+    return !match
+        ? NotFound
+        : [start + (match.index ?? 0), match[0].length]
 }
 
 
@@ -225,34 +224,34 @@ import { lookFor, NotFound } from '../../string/lookFor'
 
 
 describe('string', () => {
-	test('lookFor', () => {
-		expect(lookFor('', '')).toEqual(NotFound)
-		expect(lookFor('JoeBob', 'a')).toEqual(NotFound)
-		expect(lookFor('JoeBob', 'o')).toEqual([1, 1])
-		expect(lookFor('JoeBob', 'e')).toEqual([2, 1])
-		expect(lookFor('JoeBob', 'E')).toEqual(NotFound)
-		expect(lookFor('JoeBob', /ebo/i)).toEqual([2, 3])
-		expect(lookFor('JoeBob', /ebo/)).toEqual(NotFound)
-		expect(lookFor('JoeBob', 'Bob', -7)).toEqual([3, 3])
-		expect(lookFor('JoeBob', 'Bob', -6)).toEqual([3, 3])
-		expect(lookFor('JoeBob', 'Bob', -5)).toEqual([3, 3])
-		expect(lookFor('JoeBob', 'Bob', -4)).toEqual([3, 3])
-		expect(lookFor('JoeBob', 'Bob', -3)).toEqual([3, 3])
-		expect(lookFor('JoeBob', 'Bob', -2)).toEqual(NotFound)
-		expect(lookFor('JoeBob', 'Bob', -1)).toEqual(NotFound)
-		expect(lookFor('JoeBob', 'Bob', 0)).toEqual([3, 3])
-		expect(lookFor('JoeBob', 'Bob', 1)).toEqual([3, 3])
-		expect(lookFor('JoeBob', 'Bob', 2)).toEqual([3, 3])
-		expect(lookFor('JoeBob', 'Bob', 3)).toEqual([3, 3])
-		expect(lookFor('JoeBob', 'Bob', 4)).toEqual(NotFound)
-		expect(lookFor('JoeBob', 'Bob', 5)).toEqual(NotFound)
-		expect(lookFor('JoeBob', 'Bob', 6)).toEqual(NotFound)
-		expect(lookFor('JoeBob', 'Bob', 7)).toEqual(NotFound)
+    test('lookFor', () => {
+        expect(lookFor('', '')).toEqual(NotFound)
+        expect(lookFor('JoeBob', 'a')).toEqual(NotFound)
+        expect(lookFor('JoeBob', 'o')).toEqual([1, 1])
+        expect(lookFor('JoeBob', 'e')).toEqual([2, 1])
+        expect(lookFor('JoeBob', 'E')).toEqual(NotFound)
+        expect(lookFor('JoeBob', /ebo/i)).toEqual([2, 3])
+        expect(lookFor('JoeBob', /ebo/)).toEqual(NotFound)
+        expect(lookFor('JoeBob', 'Bob', -7)).toEqual([3, 3])
+        expect(lookFor('JoeBob', 'Bob', -6)).toEqual([3, 3])
+        expect(lookFor('JoeBob', 'Bob', -5)).toEqual([3, 3])
+        expect(lookFor('JoeBob', 'Bob', -4)).toEqual([3, 3])
+        expect(lookFor('JoeBob', 'Bob', -3)).toEqual([3, 3])
+        expect(lookFor('JoeBob', 'Bob', -2)).toEqual(NotFound)
+        expect(lookFor('JoeBob', 'Bob', -1)).toEqual(NotFound)
+        expect(lookFor('JoeBob', 'Bob', 0)).toEqual([3, 3])
+        expect(lookFor('JoeBob', 'Bob', 1)).toEqual([3, 3])
+        expect(lookFor('JoeBob', 'Bob', 2)).toEqual([3, 3])
+        expect(lookFor('JoeBob', 'Bob', 3)).toEqual([3, 3])
+        expect(lookFor('JoeBob', 'Bob', 4)).toEqual(NotFound)
+        expect(lookFor('JoeBob', 'Bob', 5)).toEqual(NotFound)
+        expect(lookFor('JoeBob', 'Bob', 6)).toEqual(NotFound)
+        expect(lookFor('JoeBob', 'Bob', 7)).toEqual(NotFound)
 
-		expect(lookFor((() => { }).toString(), '(')).toEqual([0, 1])
+        expect(lookFor((() => { }).toString(), '(')).toEqual([0, 1])
 
-		expect(lookFor('JoeBob', /ebo/i))
-	})
+        expect(lookFor('JoeBob', /ebo/i))
+    })
 })
 ```
 
@@ -264,7 +263,7 @@ npx jest
 ```txt
 PASS  src/__tests__/string/lookFor.test.
 ts                                                                                                         string
-		√ lookFor (3 ms)                                                                                                 
+        √ lookFor (3 ms)                                                                                                 
 ------------|---------|----------|---------|---------|-------------------
 File        | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                                                                                                       ------------|---------|----------|---------|---------|-------------------
 All files   |     100 |    90.47 |     100 |     100 | 
@@ -285,11 +284,11 @@ import { lookFor, NotFound } from '../../string/lookFor'
 
 
 describe('string', () => {
-	test('lookFor', () => {
-		//...
+    test('lookFor', () => {
+        //...
 
-		expect(lookFor('JoeBob', /ebo/i, 1)).toEqual([2, 3])
-	})
+        expect(lookFor('JoeBob', /ebo/i, 1)).toEqual([2, 3])
+    })
 })
 ```
 
@@ -303,16 +302,16 @@ export const NotFound: LookForResult = [-1, 0]
 
 
 export const lookFor = (
-	value: string,
-	what: string | RegExp,
-	start?: number
+    value: string,
+    what: string | RegExp,
+    start?: number
 ): LookForResult => {
 
-	//...
+    //...
 
-	return match == null || match.index == null
-		? NotFound
-		: [start + match.index, match[0].length]
+    return match == null || match.index == null
+        ? NotFound
+        : [start + match.index, match[0].length]
 }
 
 
@@ -320,8 +319,8 @@ export default lookFor
 ```
 ```txt
  PASS  src/__tests__/string/lookFor.test.ts
-	string
-		√ lookFor (9 ms)
+    string
+        √ lookFor (9 ms)
 
 ------------|---------|----------|---------|---------|-------------------
 File        | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
@@ -354,27 +353,27 @@ name: Code Coverage
 on: [push, pull_request]
 
 jobs:
-	build:
-		runs-on: ubuntu-latest
-		
-		strategy:
-			matrix:
-				node-version: [10.x, 12.x, 14.x]
-		
-		steps:
-		- name: Checkout repository
-			uses: actions/checkout@v2
+    build:
+        runs-on: ubuntu-latest
+        
+        strategy:
+            matrix:
+                node-version: [10.x, 12.x, 14.x]
+        
+        steps:
+        - name: Checkout repository
+            uses: actions/checkout@v2
 
-		- name: Setup Node.js ${{ matrix.node-version }}
-			uses: actions/setup-node@v1
-			with:
-				node-version: ${{ matrix.node-version }}
+        - name: Setup Node.js ${{ matrix.node-version }}
+            uses: actions/setup-node@v1
+            with:
+                node-version: ${{ matrix.node-version }}
 
-		- name: Install Dependencies
-			run: yarn install
+        - name: Install Dependencies
+            run: yarn install
 
-		- name: Run the Tests
-			run: yarn test -- --coverage
+        - name: Run the Tests
+            run: yarn test -- --coverage
 ```
 
 ### Push the Github Workflow
@@ -392,41 +391,41 @@ git push
 // package.json
 // ---
 {
-	"name": "utx-core",
-	"version": "1.0.0",
-	"description": "Core utilities and extensions for String and Function",
-	"author": {
-		"name": "Sam Freeman",
-		"email": "sam.freeman.55@gmail.com"
-	},
-	"license": "MIT",
-	"keywords": [ "String", "Function", "extensions" ],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/samfreeman/utx-core.git"
-	},
-	"main": "build/index.js",
-	"private": false,
-	"scripts": {
-		"dev": "tsc --watch",
-		"build": "tsc",
-		"test": "jest",
-		"lint": "eslint --ext .ts",
-		"prepare": "yarn build",
-		"prepublishOnly": "yarn test && yarn lint",
-		"preversion": "yarn lint",
-		"version": "yarn format && git add -A src",
-		"postversion": "git push && git push --tags"
-	},
-	"devDependencies": {
-		"@types/jest": "^29.2.0",
-		"@typescript-eslint/eslint-plugin": "^5.40.1",
-		"@typescript-eslint/parser": "^5.40.1",
-		"eslint": "^8.25.0",
-		"jest": "^29.2.1",
-		"ts-jest": "^29.0.3",
-		"ts-node": "^10.9.1",
-		"typescript": "^4.8.4"
-	}
+  "name": "utx-core",
+  "version": "1.0.0",
+  "description": "Core utilities and extensions for String and Function",
+  "author": {
+    "name": "Sam Freeman",
+    "email": "sam.freeman.55@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [ "String", "Function", "extensions" ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/samfreeman/utx-core.git"
+  },
+  "main": "build/index.js",
+  "private": false,
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc",
+    "test": "jest",
+    "lint": "eslint --ext .ts",
+    "prepare": "yarn build",
+    "prepublishOnly": "yarn test && yarn lint",
+    "preversion": "yarn lint",
+    "version": "yarn format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.2.0",
+    "@typescript-eslint/eslint-plugin": "^5.40.1",
+    "@typescript-eslint/parser": "^5.40.1",
+    "eslint": "^8.25.0",
+    "jest": "^29.2.1",
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4"
+  }
 }
 ```
