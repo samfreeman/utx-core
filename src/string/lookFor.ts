@@ -30,9 +30,9 @@ export const lookFor = (
 	if (start != 0)
 		value = value.slice(start)
 	const match = value.match(what)
-	return !match
+	return match == null || match.index == null
 		? NotFound
-		: [start + (match.index ?? 0), match[0].length]
+		: [start + match.index, match[0].length]
 }
 
 
