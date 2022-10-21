@@ -27,26 +27,26 @@ npx tsc --init
 // tsconfig.json
 // ---
 {
-    "compilerOptions": {
-        "incremental": true,
-        "target": "es2016",
-        "module": "commonjs",
-        "declaration": true,  // Need this to create .d.ts files
-        "outDir": "build",
-        "strict": true,
-        "noImplicitAny": true,
-        "forceConsistentCasingInFileNames": true,
-        "skipLibCheck": true
-    },
-    "include": [
-        "src/**/*.ts"
-    ],
-    "exclude": [
-        "node_modules",
-        "build",
-        "src/**/__tests__/*",
-        "src/**/*.test.ts"
-    ]
+  "compilerOptions": {
+    "incremental": true,
+    "target": "es2016",
+    "module": "commonjs",
+    "declaration": true,  // Need this to create .d.ts files
+    "outDir": "build",
+    "strict": true,
+    "noImplicitAny": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "src/**/__tests__/*",
+    "src/**/*.test.ts"
+  ]
 }
 ```
 
