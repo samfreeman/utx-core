@@ -1,5 +1,5 @@
 
-import { lookFor, NotFound } from '../../string/lookFor'
+import { lookFor, NotFound } from '../../src/string/lookFor'
 
 
 describe('string', () => {

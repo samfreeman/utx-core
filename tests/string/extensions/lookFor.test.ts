@@ -1,6 +1,6 @@
 
-import { NotFound } from '../../../string/lookFor'
-import '../../../string/extensions/lookFor'
+import { NotFound } from '../../../src/string/lookFor'
+import '../../../src/string/extensions/lookFor'
 
 
 describe('string-extensions', () => {

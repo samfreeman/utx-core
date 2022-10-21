@@ -12,13 +12,16 @@ const config: Config = {
 	collectCoverageFrom: [
 		'src/**/*.ts',
 		'!src/**/index.ts',
-		'!src/**/*.test.ts'
+		'!src/**/*.test.ts',
+		'!src/extensions/**/*.ts'
 	],
-	coverageDirectory: 'tools/coverage-results',
+	coverageDirectory: '../tools/coverage-results',
 	coverageProvider: 'v8',
 	preset: 'ts-jest',
 	testEnvironment: 'jest-environment-node',
-	testMatch: ['tests/**/*.test.ts'],
+	testMatch: ['**/tests/**/*.test.ts', '**/?(*.)+(spec|test).ts'],
+	rootDir: './',
+	roots: ['<rootDir>/src', '<rootDir>/tests'],
 	verbose: true
 }
 
