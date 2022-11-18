@@ -1,8 +1,5 @@
 
-
-export type LookForResult = [number, number]
-
-export const NotFound: LookForResult = [-1, 0]
+import { LookForResult, NotFound } from './types'
 
 
 export const lookFor = (
@@ -10,13 +7,13 @@ export const lookFor = (
 	what: string | RegExp,
 	start?: number
 ): LookForResult => {
-	if (typeof what == 'string' && what == '')
+	if (!value || (typeof what == 'string' && what == ''))
 		return NotFound
 
 	start = start ?? 0
 	if (start >= value.length)
 		return NotFound
-	
+
 	if (start <= -value.length)
 		start = 0
 	else if (start < 0)

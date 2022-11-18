@@ -2,3 +2,4 @@ node_modules
 build
 tools/coverage-results
 tools/logs
+package

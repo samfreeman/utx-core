@@ -1,5 +1,6 @@
 
-import { lookFor, LookForResult } from '../../string/lookFor'
+import { LookForResult } from '../../string/types'
+import { lookFor } from '../../string/lookFor'
 
 
 declare global {

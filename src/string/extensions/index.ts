@@ -1,2 +1,13 @@
 
+export * from './after'
+export * from './afterLast'
+export * from './before'
+export * from './beforeLast'
+export * from './first'
+export * from './last'
+export * from './lines'
 export * from './lookFor'
+export * from './lookForAll'
+export * from './lookForLast'
+export * from './splitOnce'
+export * from './write'

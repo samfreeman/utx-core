@@ -1,41 +1,68 @@
 {
   "name": "utx-core",
-  "version": "1.0.1",
-  "description": "Core utilities and extensions for String and Function",
+  "version": "2.0.0",
+  "description": "Core utilities and extensions for String, Array and Function",
   "author": {
     "name": "Sam Freeman",
     "email": "sam.freeman.55@gmail.com"
   },
   "license": "MIT",
-  "keywords": [
-    "String",
-    "Function",
-    "extensions"
-  ],
+  "keywords": [ "String", "Function", "extensions" ],
   "repository": {
     "type": "git",
     "url": "https://github.com/samfreeman/utx-core.git"
   },
   "main": "build/index.js",
+  "types": "build/index.d.ts",
   "private": false,
+  "exports": {
+    ".": {
+      "import": "./build/index.js",
+      "require": "./build/index.js",
+      "types": "./build/index.d.ts"
+    },
+    "./string": {
+      "import": "./build/string/index.js",
+      "require": "./build/string/index.js",
+      "types": "./build/string/index.d.ts"
+    },
+    "./string/*": {
+      "import": "./build/string/*.js",
+      "require": "./build/string/*.js",
+      "types": "./build/string/*.d.ts"
+    },
+    "./string/extensions": {
+      "import": "./build/string/extensions/index.js",
+      "require": "./build/string/extensions/index.js",
+      "types": "./build/string/extensions/index.d.ts"
+    },
+    "./string/extensions/*": {
+      "import": "./build/string/extensions/*.js",
+      "require": "./build/string/extensions/*.js",
+      "types": "./build/string/extensions/*.d.ts"
+    }
+  },
   "scripts": {
     "dev": "tsc --watch",
-    "build": "tsc",
-    "test": "npx jest --verbose --no-color 2>tools/logs/tests.log",
-    "coverage": "\"tools/coverage-results/lcov-report/index.html\"",
-    "cover": "yarn test && yarn coverage",
     "lint": "eslint --ext .ts",
+    "clean": "rimraf build",
+    "build": "tsc",
+    "rebuild": "yarn clean && yarn build",
+    "test": "jest --verbose --no-color 2>tools/logs/tests.log",
+    "coverage": "\"tools/coverage-result/lcov-report/index.html\"",
+    "package": "yarn build && yarn test && node node_modules/utx-package/build/cli.js",
+    "cover": "yarn test && yarn coverage",
     "prepare": "yarn build",
     "prepublishOnly": "yarn test && yarn lint",
     "preversion": "yarn lint",
-    "version": "yarn lint && git add -A src",
+    "version": "yarn lint && git add -A src && git add -A test",
     "postversion": "git push && git push --tags"
   },
   "devDependencies": {
     "@types/jest": "^29.2.0",
     "@typescript-eslint/eslint-plugin": "^5.40.1",
     "@typescript-eslint/parser": "^5.40.1",
-    "eslint": "^8.25.0",
+    "eslint": "^8.26.0",
     "jest": "^29.2.1",
     "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1",

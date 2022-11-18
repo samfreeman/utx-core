@@ -1,10 +1,16 @@
 
-import { NotFound } from '../../../src/string/lookFor'
+import { undefinedString, nullString } from '../helpers'
+
+import { NotFound } from '../../../src/string/types'
 import '../../../src/string/extensions/lookFor'
 
 
 describe('string-extensions', () => {
 	test('lookFor', () => {
+		expect(() => undefinedString.lookFor(''))
+			.toThrow(`Cannot read properties of undefined (reading 'lookFor')`)
+		expect(() => nullString.lookFor(''))
+			.toThrow(`Cannot read properties of null (reading 'lookFor')`)
 		expect(''.lookFor('')).toEqual(NotFound)
 		expect('JoeBob'.lookFor('a')).toEqual(NotFound)
 		expect('JoeBob'.lookFor('o')).toEqual([1, 1])

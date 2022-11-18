@@ -4,10 +4,14 @@
     "target": "es2016",
     "module": "commonjs",
     "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
     "outDir": "build",
+    "noEmitOnError": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitAny": true,
-    "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
   },
   "include": [
@@ -16,7 +20,7 @@
   "exclude": [
     "node_modules",
     "build",
-    "tools",
-    "tests"
+    "tests",
+    "tools"
   ]
 }
