@@ -21,6 +21,51 @@
       "require": "./build/index.js",
       "types": "./build/index.d.ts"
     },
+    "./extensions": {
+      "import": "./build/extensions.js",
+      "require": "./build/extensions.js",
+      "types": "./build/extensions.d.ts"
+    },
+    "./array": {
+      "import": "./build/array/index.js",
+      "require": "./build/array/index.js",
+      "types": "./build/array/index.d.ts"
+    },
+    "./array/*": {
+      "import": "./build/array/*.js",
+      "require": "./build/array/*.js",
+      "types": "./build/array/*.d.ts"
+    },
+    "./array/extensions": {
+      "import": "./build/array/extensions/index.js",
+      "require": "./build/array/extensions/index.js",
+      "types": "./build/array/extensions/index.d.ts"
+    },
+    "./array/extensions/*": {
+      "import": "./build/array/extensions/*.js",
+      "require": "./build/array/extensions/*.js",
+      "types": "./build/array/extensions/*.d.ts"
+    },
+    "./function": {
+      "import": "./build/function/index.js",
+      "require": "./build/function/index.js",
+      "types": "./build/function/index.d.ts"
+    },
+    "./function/*": {
+      "import": "./build/function/*.js",
+      "require": "./build/function/*.js",
+      "types": "./build/function/*.d.ts"
+    },
+    "./function/extensions": {
+      "import": "./build/function/extensions/index.js",
+      "require": "./build/function/extensions/index.js",
+      "types": "./build/function/extensions/index.d.ts"
+    },
+    "./function/extensions/*": {
+      "import": "./build/function/extensions/*.js",
+      "require": "./build/function/extensions/*.js",
+      "types": "./build/function/extensions/*.d.ts"
+    },
     "./string": {
       "import": "./build/string/index.js",
       "require": "./build/string/index.js",
